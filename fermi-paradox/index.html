@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fermi Paradox — Where Is Everyone?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a24;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #2a2a3a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('tmp/openai-image-gen-2026-03-19-20-43-11/001-vast-cosmic-void-with-millions-of-stars-.png') center/cover;
+            filter: brightness(0.4);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, 
+                rgba(10, 10, 15, 0.3) 0%,
+                rgba(10, 10, 15, 0.6) 50%,
+                rgba(10, 10, 15, 1) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-quote {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .hero-author {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* What Is It */
+        .what-is {
+            background: var(--bg-secondary);
+        }
+
+        .what-is-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .what-is-text h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .what-is-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .what-is-image {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .what-is-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* History */
+        .history {
+            background: var(--bg-primary);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline-year {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Paradox */
+        .paradox {
+            background: var(--bg-secondary);
+        }
+
+        .paradox-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .paradox-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .paradox-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .paradox-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .paradox-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .paradox-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Solutions */
+        .solutions {
+            background: var(--bg-primary);
+        }
+
+        .solutions-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .tab.active, .tab:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .solution-content {
+            display: none;
+        }
+
+        .solution-content.active {
+            display: block;
+        }
+
+        .solution-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+        }
+
+        .solution-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .theory-tag {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            background: rgba(99, 102, 241, 0.15);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Gallery */
+        .gallery {
+            background: var(--bg-secondary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(10, 10, 15, 0.9), transparent);
+        }
+
+        .gallery-caption h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .gallery-caption p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(129, 140, 248, 0.05) 100%);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-text a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .what-is-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .paradox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">Fermi<span>Paradox</span></a>
+            <ul class="nav-links">
+                <li><a href="#what-is">The Paradox</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 16v-4M12 8h.01"></path>
+                </svg>
+                Astrobiology & SETI
+            </div>
+            <h1>The <span>Fermi Paradox</span></h1>
+            <p class="hero-quote">"But where is everybody?"</p>
+            <p class="hero-author">— Enrico Fermi, 1950</p>
+            <div class="hero-cta">
+                <a href="#what-is" class="btn btn-primary">
+                    Explore the Paradox
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </a>
+                <a href="#solutions" class="btn btn-secondary">Possible Solutions</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="what-is" id="what-is">
+        <div class="container">
+            <div class="what-is-grid">
+                <div class="what-is-text">
+                    <div class="section-label">The Question</div>
+                    <h2>What Is the Fermi Paradox?</h2>
+                    <p>The Fermi Paradox is the discrepancy between the lack of clear, conclusive evidence of extraterrestrial life and the apparently high likelihood that it exists.</p>
+                    <p>The paradox arises from the combination of two key arguments: the sheer scale of the universe suggests intelligent life should be common, yet we have found no proof that such life has ever existed anywhere except Earth.</p>
+                    
+                    <div class="stat-grid">
+                        <div class="stat">
+                            <div class="stat-number">200B+</div>
+                            <div class="stat-label">Stars in the Milky Way</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">70 sextillion</div>
+                            <div class="stat-label">Stars in observable universe</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">13.8B</div>
+                            <div class="stat-label">Years since the Big Bang</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Confirmed alien contacts</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="what-is-image">
+                    <img src="tmp/openai-image-gen-2026-03-19-20-43-11/001-dramatic-illustration-of-an-astronaut-st.png" alt="Astronaut alone in space">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="history" id="history">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Origins</div>
+                <h2 class="section-title">A Brief History</h2>
+                <p class="section-desc">The paradox has roots predating Fermi's famous question by centuries.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">1686</div>
+                    <h3 class="timeline-title">Fontenelle's Question</h3>
+                    <p class="timeline-text">Bernard Le Bovier de Fontenelle posed the question in "Conversations on the Plurality of Worlds," noting that if intelligent beings existed on the Moon, "they would have already come to us before now."</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">1950</div>
+                    <h3 class="timeline-title">Fermi's Famous Question</h3>
+                    <p class="timeline-text">During a lunch conversation at Los Alamos with Edward Teller, Herbert York, and Emil Konopinski, Enrico Fermi suddenly asked: "But where is everybody?" The question became the cornerstone of the modern paradox.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">1963</div>
+                    <h3 class="timeline-title">First Print Reference</h3>
+                    <p class="timeline-text">Carl Sagan mentioned the paradox in a footnote of a paper, bringing academic attention to the topic.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-year">1975</div>
+                    <h3 class="timeline-title">Named & Formalized</h3>
+                    <p class="timeline-text">Michael Hart published a detailed examination, and David Stephenson coined the term "Fermi Paradox." The paradox entered mainstream scientific discourse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="paradox" id="paradox">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">The Logic</div>
+                <h2 class="section-title">Why Should We Have Been Visited?</h2>
+                <p class="section-desc">Two powerful arguments combine to create the paradox.</p>
+            </div>
+
+            <div class="paradox-grid">
+                <div class="paradox-card">
+                    <div class="paradox-icon">🌌</div>
+                    <h3>Scale Argument</h3>
+                    <p>With 200–400 billion stars in our galaxy alone, and billions of years of cosmic history, intelligent life should have emerged many times over.</p>
+                </div>
+                <div class="paradox-card">
+                    <div class="paradox-icon">🚀</div>
+                    <h3>Probability Argument</h3>
+                    <p>Even at slow interstellar travel speeds, a civilization could colonize the entire galaxy in just 5–50 million years—a blink in cosmic time.</p>
+                </div>
+                <div class="paradox-card">
+                    <div class="paradox-icon">📡</div>
+                    <h3>No Evidence</h3>
+                    <p>Despite decades of searching (SETI), listening for radio signals, and scanning the skies, we have found nothing—no signals, no artifacts, no traces.</p>
+                </div>
+                <div class="paradox-card">
+                    <div class="paradox-icon">❓</div>
+                    <h3>The Contradiction</h3>
+                    <p>If intelligent life is likely and would spread, why do we see absolutely no evidence of it? Something doesn't add up.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solutions" id="solutions">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Resolutions</div>
+                <h2 class="section-title">Possible Solutions</h2>
+                <p class="section-desc">Scientists have proposed many explanations. Here are some of the most compelling.</p>
+            </div>
+
+            <div class="solutions-tabs">
+                <button class="tab active" onclick="showTab('rare')">Rare Earth</button>
+                <button class="tab" onclick="showTab('filter')">Great Filter</button>
+                <button class="tab" onclick="showTab('dark')">Dark Forest</button>
+                <button class="tab" onclick="showTab('zoo')">Zoo Hypothesis</button>
+            </div>
+
+            <div class="solution-content active" id="rare">
+                <div class="solution-card">
+                    <span class="theory-tag">They're Rare</span>
+                    <h3>Rare Earth Hypothesis</h3>
+                    <p>Perhaps intelligent life is extraordinarily uncommon. Earth may be one of the first—or the only—planets to develop complex life. The conditions for intelligent life may require an extremely unlikely combination of factors: the right star type, the right orbital position, a large moon for stability, plate tectonics, a protective gas giant, and years of evolutionary luck.</p>
+                    <p>This doesn't mean we're alone in the universe, but that truly intelligent, technological civilizations may be separated by millions of light-years and immense time spans.</p>
+                </div>
+            </div>
+
+            <div class="solution-content" id="filter">
+                <div class="solution-card">
+                    <span class="theory-tag">They're Gone</span>
+                    <h3>The Great Filter</h3>
+                    <p>Perhaps there's a catastrophic "filter" that prevents civilizations from reaching interstellar travel. This filter could be behind us (we've already passed it) or ahead of us (and we're heading toward it).</p>
+                    <p>If the filter is ahead, it could be nuclear war, climate catastrophe, AI apocalypse, or some unknown cosmic disaster. The silence we observe might be the graveyard of countless civilizations that failed to survive their own technological adolescence.</p>
+                </div>
+            </div>
+
+            <div class="solution-content" id="dark">
+                <div class="solution-card">
+                    <span class="theory-tag">They're Hiding</span>
+                    <h3>The Dark Forest Theory</h3>
+                    <p>In a cosmic "dark forest," intelligent civilizations stay silent to avoid being detected and destroyed. Like predators in a forest at night, the safe strategy is to never reveal your location.</p>
+                    <p>Any civilization that broadcasts its presence loudly is immediately targeted by others who cannot take the risk of being discovered. This creates a universe of complete silence—not because no one exists, but because survival depends on secrecy.</p>
+                    <div class="gallery-item" style="margin-top: 1.5rem; border-radius: 12px; overflow: hidden;">
+                        <img src="tmp/openai-image-gen-2026-03-19-20-43-11/001-conceptual-art-of-the-dark-forest-theory.png" alt="Dark Forest concept art" style="width: 100%; display: block;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution-content" id="zoo">
+                <div class="solution-card">
+                    <span class="theory-tag">They're Watching</span>
+                    <h3>The Zoo Hypothesis</h3>
+                    <p>Perhaps advanced civilizations exist but have agreed to a non-interference protocol, leaving Earth and humanity to develop naturally—like a wildlife preserve or a zoo.</p>
+                    <p>First proposed by Soviet rocket scientist Konstantin Tsiolkovsky in 1933, this theory suggests we're being observed by species far more advanced than us who have chosen to keep their existence hidden from us, perhaps to protect our independent cultural development.</p>
+                    <p>Alternatively, we may have been "visited" long ago and their artifacts or probes are so advanced they're indistinguishable from natural phenomena.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Gallery</div>
+                <h2 class="section-title">Visual Journey</h2>
+                <p class="section-desc">AI-generated illustrations exploring humanity's cosmic loneliness.</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="tmp/openai-image-gen-2026-03-19-20-43-11/001-vast-cosmic-void-with-millions-of-stars-.png" alt="Cosmic void">
+                    <div class="gallery-caption">
+                        <h4>The Cosmic Void</h4>
+                        <p>Billions of stars, yet we hear nothing.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="tmp/openai-image-gen-2026-03-19-20-43-11/001-arecibo-message-being-transmitted-into-d.png" alt="Arecibo message">
+                    <div class="gallery-caption">
+                        <h4>The Arecibo Message</h4>
+                        <p>Humanity's attempt to shout into the void.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="tmp/openai-image-gen-2026-03-19-20-43-11/001-dramatic-illustration-of-an-astronaut-st.png" alt="Lone astronaut">
+                    <div class="gallery-caption">
+                        <h4>Solitude</h4>
+                        <p>The astronaut who represents us all.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="tmp/openai-image-gen-2026-03-19-20-43-11/001-conceptual-art-of-the-dark-forest-theory.png" alt="Dark Forest">
+                    <div class="gallery-caption">
+                        <h4>The Dark Forest</h4>
+                        <p>Are predators lurking in the shadows?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>The Search Continues</h2>
+            <p>With new telescopes, expanding SETI programs, and the discovery of thousands of exoplanets, we continue to search for answers to Fermi's simple but profound question.</p>
+            <div class="hero-cta">
+                <a href="https://en.wikipedia.org/wiki/Fermi_paradox" class="btn btn-primary" target="_blank">
+                    Read on Wikipedia
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"></path>
+                    </svg>
+                </a>
+                <a href="https://www.seti.org/" class="btn btn-secondary" target="_blank">
+                    Visit SETI Institute
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">
+                A personal exploration of the Fermi Paradox. Built with curiosity and AI-generated imagery.<br>
+                <a href="https://en.wikipedia.org/wiki/Fermi_paradox">Wikipedia</a> • <a href="https://www.space.com/25325-fermi-paradox.html">Space.com</a> • <a href="https://www.britannica.com/story/the-fermi-paradox-where-are-all-the-aliens">Britannica</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(id) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.solution-content').forEach(c => c.classList.remove('active'));
+            document.querySelector(`[onclick="showTab('${id}')"]`).classList.add('active');
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+</html>
