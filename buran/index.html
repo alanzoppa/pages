@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buran — The Soviet Space Shuttle</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+      color: #e8e8f0;
+      background: #0a0a10;
+    }
+    .hero {
+      width: calc(100% + 40px);
+      margin-left: -20px;
+      margin-bottom: 40px;
+    }
+    .hero img { width: 100%; height: auto; display: block; }
+    h1 { font-size: 2.2rem; margin-bottom: 8px; color: #ff6b4a; }
+    h2 { font-size: 1.5rem; margin: 36px 0 16px; color: #ff6b4a; }
+    h3 { font-size: 1.15rem; margin: 24px 0 10px; color: #d8d8e8; }
+    .subtitle { font-size: 1.1rem; color: #666688; margin-bottom: 32px; }
+    p { margin-bottom: 16px; }
+    .highlight {
+      background: rgba(255, 107, 74, 0.08);
+      border-left: 3px solid #ff6b4a;
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .stat {
+      background: #111118;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid #1e1e30;
+    }
+    .stat .num { font-size: 1.6rem; font-weight: bold; color: #ff6b4a; }
+    .stat .label { font-size: 0.8rem; color: #666688; margin-top: 4px; }
+    .section {
+      background: #111118;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px solid #1e1e30;
+    }
+    .section h3 { margin-top: 0; color: #ffcc88; }
+    ul { margin: 12px 0 16px 24px; }
+    li { margin-bottom: 8px; }
+    .back { margin-top: 40px; }
+    .back a { color: #ff6b4a; }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <img src="hero.png" alt="Buran Soviet Space Shuttle abandoned at Baikonur">
+  </div>
+
+  <h1>Buran</h1>
+  <p class="subtitle">The Soviet Space Shuttle That Flew Once and Died in a Hangar</p>
+
+  <p>In 1988, the Soviet Union built a space shuttle that looked almost exactly like the American one — and then did something the Americans never managed: it flew itself into orbit and landed without a single human on board. Two orbits of Earth. Autonomously. On November 15, 1988.</p>
+
+  <p>Then the Soviet Union collapsed, the program was abandoned, the hangars were left to rot in Kazakhstan, and in 2002, the roof of one hangar collapsed and crushed the shuttle. That was that.</p>
+
+  <p>The story of Buran is one of the most remarkable chapters of the Cold War space race — and it involves espionage, a perfect copy, a technical innovation the US never achieved, and a ending that's equal parts tragic and absurd.</p>
+
+  <div class="highlight">
+    <p><strong>The headline fact:</strong> Buran's only flight was the first (and remains one of the only) fully autonomous shuttle flights ever. No crew. The orbiter launched, orbited Earth twice, and landed entirely under automated control — with wind shear of up to 20 m/s at the landing site. The Soviet system did something NASA never attempted.</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat"><div class="num">1</div><div class="label">flight ever made</div></div>
+    <div class="stat"><div class="num">Nov 15, 1988</div><div class="label">launch date</div></div>
+    <div class="stat"><div class="num">2002</div><div class="label">destroyed in a hangar collapse</div></div>
+  </div>
+
+  <h2>The Espionage: They Stole the Plans</h2>
+  <p>The Buran didn't just look like the American Space Shuttle — it was designed using stolen American plans. The CIA's 1985 analysis "Soviet Acquisition of Militarily Significant Western Technology" described the Shuttle project as one of the KGB's greatest exploits. Soviet intelligence agencies (the VPK and KGB) accessed NASA's shuttle design documents, including airframe specifications, material data, flight computer systems, and propulsion engineering. Much of this material was hosted on commercial databases — making the Shuttle heist one of the earliest cases of digital espionage.</p>
+
+  <p>The documents the Soviets acquired covered: computer programs for design analysis, material specifications, airframe designs, and flight computer systems. This information, the CIA concluded, "allowed Soviet military industries to save years of scientific research and testing time as well as millions of rubles."</p>
+
+  <div class="highlight">
+    <p><strong>The counter-espionage twist:</strong> When American agencies discovered the theft, the CIA allegedly began feeding flawed designs — NASA rejects — to Soviet spies, disguised as "improvements." The idea was to let the Soviets build on bad data. How much of this influenced Buran is debated, but the espionage timeline is documented.</p>
+  </div>
+
+  <h2>The Similarities — And the Key Differences</h2>
+
+  <p>From the outside, Buran looked virtually identical to the US Shuttle: delta wings, T-shaped tail, heat shield tiles, payload bay. But the underlying system was fundamentally different in several critical ways:</p>
+
+  <div class="section">
+    <h3>No Engines on the Orbiter</h3>
+    <p>This is the single most important design difference. The US Space Shuttle had three Space Shuttle Main Engines (SSMEs) attached to the orbiter, which fired during launch from the external tank. The Buran orbiter had <em>no</em> main engines. All thrust came from the Energia launch vehicle. This meant the Buran orbiter was lighter and simpler — but it also meant the Energia rocket had to do all the work.</p>
+  </div>
+
+  <div class="section">
+    <h3>Liquid Boosters vs. Solid Boosters</h3>
+    <p>The US Shuttle used two Solid Rocket Boosters (SRBs) made from segmented sections joined by O-rings — the same O-rings that caused the Challenger disaster in 1986. Buran's companion Energia rocket used four liquid-fueled boosters (kerosene/oxygen with RD-170 engines, each with four nozzles). No O-rings. No segments. Potentially more reliable. The Russians specifically cited the Challenger explosion as proof their approach was superior.</p>
+  </div>
+
+  <div class="section">
+    <h3>Autonomous Flight Capability</h3>
+    <p>Perhaps the most technically impressive difference. The Buran was designed from the start to fly autonomously — it had an onboard automated landing system that could land the shuttle without a human pilot. On its one flight, it did exactly that. The US Shuttle was designed with human pilots and only added autopilot landing capabilities much later. Buran's autonomous capability also meant the Soviets could conduct uncrewed missions — useful for delivering military payloads.</p>
+  </div>
+
+  <div class="section">
+    <h3>Payload Capacity</h3>
+    <p>Energia could lift approximately 100,000 kg to low Earth orbit — slightly more than the US Saturn V, the most powerful rocket ever built by NASA. The system was genuinely powerful, not just a copy.</p>
+  </div>
+
+  <h2>The Program: Ambitious but Untethered</h2>
+
+  <p>The Buran program was approved in 1976, under Leonid Brezhnev, as a direct response to the US Space Shuttle program. The Soviets saw the Shuttle as a potential military threat — a vehicle that could launch, deploy satellites or weapons, and return to Earth, potentially being reused rapidly. If the US had that capability, the Soviets needed it too.</p>
+
+  <p>But unlike the US program, which had clear scientific, military, and commercial missions, the Buran program's role within the Soviet space industry was never entirely clear. Existing missions — like maintaining the Mir space station — were already handled by Soyuz rockets. The Soviets couldn't articulate exactly why they needed Buran beyond matching the Americans.</p>
+
+  <p>The program cost billions of rubles. The Energia rocket had its first launch in 1987 with an experimental military platform called Polyus as payload. Then came the single Buran flight in 1988.</p>
+
+  <h2>The Flights: Atmospheric Tests and One Orbital Mission</h2>
+
+  <p>Before Buran flew in space, the Soviets built an atmospheric test vehicle called OK-GLI — a Buran orbiter fitted with four jet engines for atmospheric flight testing. Between November 1985 and April 1988, OK-GLI made 24 atmospheric test flights from Baikonur, with a crew of two on board. Fifteen of those flights landed using the automatic mode, proving the autonomous system worked in the atmosphere before it went to space.</p>
+
+  <p>Then came November 15, 1988. Buran (orbiter 1K) launched at 03:00 UTC from Baikonur, atop an Energia rocket. No crew. The orbiter completed two orbits of Earth — about 3.5 hours — then re-entered the atmosphere and landed at Baikonur under full autonomous control, with wind shear of up to 20 m/s at the landing site. Everything worked. The Soviets had demonstrated they could do what America couldn't.</p>
+
+  <p>The original mission plan called for cosmonauts to fly on subsequent missions. There were plans for crewed flights, space station construction, and military missions. None happened.</p>
+
+  <h2>The Collapse — Literally</h2>
+
+  <p>By the late 1980s, the Soviet economy was in crisis. The Buran program's cost — estimated at billions of rubles — was unsustainable. Funding trickled to a halt and was officially ended in 1993. After the Soviet Union collapsed in 1991, the Baikonur Cosmodrome ended up in newly independent Kazakhstan. The orbiters — including a second one that was 97% complete — were left in their hangars.</p>
+
+  <p>On May 12, 2002, during a massive storm in Kazakhstan, the roof of the MIK hangar collapsed. The two Buran orbiters — the one that flew and the one that almost flew — were crushed under tons of debris. Eight workers were killed.</p>
+
+  <p>The remains still sit in the ruins. RKK Energia, the company that built the orbiters, sold them to a Kazakh company called Infrakos in 2004, which in turn sold them to a Russian-Kazakh company. What remained was essentially space junk.</p>
+
+  <div class="highlight">
+    <p><strong>The cruel irony:</strong> The Buran orbiter that flew to space and back — the first autonomous shuttle flight in history — was later crushed to death by a poorly maintained roof. The technical achievement was extraordinary. The ending was mundane.</p>
+  </div>
+
+  <h2>OK-GLI: The Ghost That Traveled</h2>
+
+  <p>The atmospheric test vehicle OK-GLI had a different fate than the other Buran orbiters. After the Soviet collapse, it was moved to the Speyer Technik Museum in Germany, where it sits today as a museum exhibit. Tourists can walk up to it and see what the Soviet shuttle looked like up close. The jet engines that were fitted for atmospheric testing still hang from its sides — a reminder that this wasn't a spaceship, but a test bed for one.</p>
+
+  <h2>The Legacy</h2>
+
+  <ul>
+    <li><strong>First autonomous shuttle flight.</strong> No crew on board, fully automated launch, orbit, and landing. This was technically superior to anything NASA attempted with the Shuttle.</li>
+    <li><strong>The rockets lived on.</strong> While the orbiter was abandoned, much of the technology and research that went into the Buran program was adapted for Russian elements of the International Space Station. The core of the ISS uses technology first developed for the Buran era.</li>
+    <li><strong>The liquid boosters concept was sound.</strong> The segmented solid rocket boosters that caused the Challenger disaster used O-rings — a known weak point. The Soviet liquid boosters avoided this problem entirely. Whether the Soviets designed it this way because they were smarter or because they saw what happened to Challenger is debatable.</li>
+    <li><strong>It demonstrated Soviet engineering capability.</strong> The Buran was not a cheap copy. It incorporated genuine innovations — particularly the autonomous flight system. But the program's purpose was never clear enough to justify its cost.</li>
+  </ul>
+
+  <h2>Why It Matters</h2>
+
+  <p>Buran is a story about how great engineering can still fail. The Soviets built a machine that flew to space and back without a pilot — a feat the US didn't replicate with the Shuttle until decades later. But they built it without a clear mission, funded by a dying empire, and when the empire fell, the machine was left to rust in a foreign country and then crushed by its own roof.</p>
+
+  <p>It's also a story about the cost of mimicry. The Soviets copied the American Shuttle because they were afraid of falling behind. But copying a vehicle doesn't mean copying its purpose. The Shuttle had missions — deploying satellites, servicing the Hubble telescope, building the ISS. Buran had none of these. The Soviets built a solution to a problem they didn't fully have, and the bill came due before they figured out what to do with it.</p>
+
+  <p>There's something poignant about it — a machine that went to space, came back perfectly, and then sat in a hangar until the roof caved in. The technical achievement was real. The ending was just sad.</p>
+
+  <p class="back"><a href="index.html">← Back to home</a></p>
+
+</body>
+</html>
