@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Tanganyika Laughter Epidemic of 1962</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>😶‍🌫️</text></svg>">
+  <meta name="description" content="In 1962, an unstoppable wave of laughter swept through schools and villages in Tanganyika. No pathogen. No toxin. Just human pressure finding nowhere to go.">
+  <meta property="og:title" content="The Tanganyika Laughter Epidemic of 1962">
+  <meta property="og:description" content="1,000 people affected. 14 schools closed over 18 months. No biological cause ever found.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --savanna: #D4A056;
+      --terracotta: #C25B3A;
+      --forest: #2A5C3A;
+      --cream: #FAF5EE;
+      --cream-dark: #EFE8DC;
+      --ink: #1A1A1A;
+      --gray: #6B6358;
+      --light-gray: #9E968C;
+      --border: rgba(26, 26, 26, 0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.75;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero__image {
+      position: absolute;
+      inset: 0;
+      background: url('tanganyika-lake-victoria.jpg') center / cover no-repeat;
+      transform: scale(1.02);
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(42, 92, 58, 0.25) 0%,
+        rgba(26, 26, 26, 0.55) 50%,
+        rgba(26, 26, 26, 0.85) 100%
+      );
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 60px 24px 80px;
+      color: #fff;
+    }
+    .hero__date {
+      font-family: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+      font-size: 0.80rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--savanna);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+      margin-bottom: 12px;
+    }
+    .hero__subtitle {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+    .hero__attribution-small {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 8px;
+      letter-spacing: 0.03em;
+    }
+    .hero__scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    .hero__scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 32px;
+      background: rgba(255,255,255,0.3);
+      margin: 8px auto 0;
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.3); }
+    }
+
+    /* ===== ARTICLE ===== */
+    .article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px;
+      font-size: 1.05rem;
+    }
+    .article h2 {
+      font-family: 'Source Sans 3', 'Helvetica Neue', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      color: var(--ink);
+      margin: 48px 0 20px;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    /* ===== LEAD ===== */
+    .lead {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      color: var(--gray);
+      border-left: 3px solid var(--savanna);
+      padding-left: 24px;
+      margin: 48px 0 40px;
+    }
+
+    /* ===== DIVIDERS ===== */
+    .divider {
+      text-align: center;
+      margin: 48px 0;
+      color: var(--savanna);
+      font-size: 0.85rem;
+      letter-spacing: 0.6em;
+      opacity: 0.6;
+    }
+
+    /* ===== PARAGRAPHS ===== */
+    .article p {
+      margin-bottom: 1.4em;
+    }
+
+    /* ===== PULL QUOTEs ===== */
+    .pull-quote {
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--ink);
+      border-left: 4px solid var(--terracotta);
+      padding: 8px 0 8px 28px;
+      margin: 2.5rem 0;
+    }
+    .pull-quote--final {
+      font-size: 1.55rem;
+      text-align: center;
+      border-left: none;
+      border-top: 3px solid var(--terracotta);
+      border-bottom: 3px solid var(--terracotta);
+      padding: 36px 20px;
+      margin: 4rem 0 2rem;
+      background: var(--cream-dark);
+    }
+
+    /* ===== LISTS ===== */
+    .symptom-list {
+      list-style: none;
+      margin: 1.5rem 0 2rem;
+    }
+    .symptom-list li {
+      position: relative;
+      padding: 10px 0 10px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .symptom-list li:last-child { border-bottom: none; }
+    .symptom-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20px;
+      width: 8px;
+      height: 8px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+    .symptom-list strong {
+      color: var(--ink);
+    }
+
+    /* ===== FACT BOX ===== */
+    .fact-box {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin: 2.5rem 0;
+    }
+    .fact-box__title {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 16px;
+    }
+    .fact-box table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .fact-box td {
+      padding: 6px 0;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+    .fact-box td:first-child {
+      font-weight: 600;
+      color: var(--gray);
+      white-space: nowrap;
+      width: 160px;
+      padding-right: 12px;
+    }
+
+    /* ===== IMAGE: BREAK-OUT ===== */
+    .img-breakout {
+      margin: 3.5rem -24px;
+      position: relative;
+    }
+    .img-breakout img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+    }
+    .img-breakout__caption {
+      font-size: 0.82rem;
+      color: var(--light-gray);
+      font-style: italic;
+      text-align: center;
+      margin-top: 10px;
+      padding: 0 12px;
+    }
+    .img-breakout__caption a {
+      color: var(--gray);
+    }
+
+    /* ===== IMAGE: SIDE-BY-SIDE ===== */
+    .img-side {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 32px;
+      align-items: start;
+      margin: 3rem 0;
+    }
+    .img-side--reverse {
+      grid-template-columns: 220px 1fr;
+    }
+    .img-side img {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .img-side img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.18);
+    }
+    .img-side--reverse img { transform: rotate(-1.5deg); }
+    .img-side--reverse img:hover { transform: rotate(-1.5deg) translateY(-4px); }
+    .img-side__caption {
+      font-size: 0.82rem;
+      color: var(--light-gray);
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    /* ===== SECTION INTRO ===== */
+    .section-intro {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--gray);
+      margin-bottom: 1.8rem;
+      line-height: 1.65;
+    }
+
+    /* ===== EMPHASIS ===== */
+    .article em { font-style: italic; color: #333; }
+    .article strong { font-weight: 700; color: var(--ink); }
+
+    /* ===== FURTHER READING ===== */
+    .further-reading {
+      margin: 3rem 0 2rem;
+    }
+    .further-reading li {
+      padding: 4px 0 4px 16px;
+      font-size: 0.95rem;
+    }
+    .further-reading li::marker {
+      color: var(--savanna);
+    }
+
+    /* ===== IMAGE ATTRIBUTION ===== */
+    .image-credits {
+      margin: 3rem 0;
+      padding: 20px 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--light-gray);
+      line-height: 1.9;
+    }
+
+    /* ===== FOOTER ===== */
+    .page-footer {
+      text-align: center;
+      padding: 40px 24px 64px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+    }
+    .page-footer a, .back-link a {
+      color: var(--terracotta);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .page-footer a:hover, .back-link a:hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+    .back-link {
+      display: block;
+      margin-bottom: 16px;
+      padding: 12px 0;
+    }
+
+    /* ===== OUTBREAKS LIST ===== */
+    .outbreaks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 1.5rem 0 2rem;
+      background: var(--cream-dark);
+      padding: 24px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .outbreak-card {
+      padding: 0 8px;
+    }
+    .outbreak-card h4 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--terracotta);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .outbreak-card p {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--gray);
+    }
+
+    /* ===== PARALLELS ===== */
+    .parallels {
+      margin: 1.5rem 0 2rem;
+    }
+    .parallel-item {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .parallel-item:last-child { border-bottom: none; }
+    .parallel-name {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .parallel-item p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin: 0;
+    }
+
+    /* ===== MPI RISK FACTORS ===== */
+    .mpi-list {
+      list-style: none;
+      counter-reset: mpi;
+      margin: 1.5rem 0 2rem;
+    }
+    .mpi-list li {
+      counter-increment: mpi;
+      padding: 14px 0 14px 52px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .mpi-list li:last-child { border-bottom: none; }
+    .mpi-list li::before {
+      content: counter(mpi);
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 36px;
+      height: 36px;
+      background: var(--forest);
+      color: #fff;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mpi-list strong {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .mpi-list span {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline-wrap {
+      margin: 4rem -40px;
+      padding: 48px 40px;
+      background: linear-gradient(135deg, #23221e 0%, #2e2c26 50%, #23221e 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--savanna), transparent);
+    }
+    .timeline-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--terracotta), transparent);
+    }
+    .timeline-title {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--savanna);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .timeline-track {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .timeline-track::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, var(--savanna) 6%, var(--savanna) 94%, transparent);
+    }
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      flex-shrink: 0;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 3px solid var(--savanna);
+      margin-top: 5px;
+      position: relative;
+      left: -6px;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.4);
+      background: var(--savanna);
+    }
+    .timeline-dot--accent {
+      border-color: var(--terracotta);
+    }
+    .timeline-dot--accent:hover { background: var(--terracotta); }
+    .timeline-date {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--savanna);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      min-width: 130px;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+    .timeline-desc {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.5;
+      padding-top: 1px;
+    }
+
+    @media (max-width: 768px) {
+      .hero { min-height: 480px; }
+      .hero__content { padding: 40px 20px 60px; }
+      .article { font-size: 1rem; }
+      .img-breakout { margin: 2.5rem 0; }
+      .img-side {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+      }
+      .timeline-wrap { margin: 3rem -24px; padding: 36px 24px; }
+      .timeline-date { min-width: 90px; font-size: 0.7rem; }
+      .pull-quote { font-size: 1.2rem; }
+      .pull-quote--final { font-size: 1.3rem; padding: 28px 16px; }
+      .fact-box { padding: 20px; }
+      .fact-box td:first-child { width: 120px; }
+      .outbreaks { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .hero { min-height: 420px; }
+      .hero__content { padding: 24px 16px 48px; }
+      .hero__scroll-hint { display: none; }
+      .article { padding: 0 16px; }
+      .timeline-wrap { padding: 28px 16px; margin: 2rem -16px; }
+      .timeline-track::before { left: 14px; }
+      .timeline-dot { width: 11px; height: 11px; margin-top: 4px; }
+      .mpi-list li { padding-left: 42px; }
+      .mpi-list li::before { width: 30px; height: 30px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <div class="hero__image"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <span class="hero__date">East Africa · 1962–1964</span>
+      <h1>The Tanganyika Laughter Epidemic</h1>
+      <p class="hero__subtitle">Generated by moonshot/kimi-k2.5 · April 2, 2026</p>
+      <p class="hero__attribution-small">Image: NASA, via Wikimedia Commons</p>
+    </div>
+    <div class="hero__scroll-hint">Scroll</div>
+  </header>
+
+  <!-- ===== ARTICLE ===== -->
+  <main class="article">
+
+    <!-- LEAD / HOOK -->
+    <p class="lead">On January 30, 1962, three schoolgirls in a small village boarding school near Lake Victoria began to laugh. They couldn't stop.</p>
+
+    <p>It wasn't a joke. There was no punchline. The girls — aged 12 to 18, living in a strict mission-run school in Kashasha, on the western coast of Lake Victoria — were overcome by something they couldn't control and didn't understand. The laughter came in waves, lasted for hours, sometimes blurred into crying, and left them unable to concentrate on their lessons.</p>
+
+    <p>Within weeks, it spread to 95 of the school's 159 girls.</p>
+
+    <p>By the time it was over, 14 schools had been shut down, roughly 1,000 people had been affected, and the outbreak had rippled across 100 miles of Tanzania over 18 months. Not a single pathogen was ever found. No toxin was ever detected. This was the Tanganyika Laughter Epidemic — one of history's most misunderstood events, and a haunting case study in what happens when human pressure finds nowhere to go.</p>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <!-- WHAT ACTUALLY HAPPENED -->
+    <h2>What Actually Happened</h2>
+
+    <p class="section-intro">A nation newborn. Girls caught between worlds. And then — the laughter began.</p>
+
+    <p>The outbreak began at a mission-run boarding school for girls in the village of Kashasha, in the Bukoba District of Tanganyika — a country that had just achieved independence from British colonial rule little more than a month earlier. The students were adolescents under rigid discipline, living away from home, navigating immense expectations from teachers and parents, and situated at the fault line between traditional tribal authority and the new ideas entering the world through colonial education.</p>
+
+    <p>Three girls started laughing. Then more joined. The episodes lasted anywhere from a few hours to 16 days, averaging about a week. The teaching staff remained completely unaffected — the phenomenon ran through students only. But it made teaching impossible.</p>
+
+    <p>On March 18, 1962, the school closed.</p>
+
+    <p>The students were sent home to their villages. And the laughter went with them.</p>
+
+    <!-- LAKE VICTORIA IMAGE (BREAKOUT) -->
+    <div class="img-breakout">
+      <img src="tanganyika-lake-victoria.jpg" alt="Lake Victoria, western Tanzania — region of the 1962 outbreak" loading="lazy">
+      <p class="img-breakout__caption">Lake Victoria — the vast inland sea across whose western shore the outbreak would spread. <span>(NASA / Wikimedia Commons)</span></p>
+    </div>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <!-- THE SPREAD -->
+    <h2>The Spread</h2>
+
+    <p class="section-intro">The decision to shut the school would prove catastrophic — not because the disease was real, but because it wasn't.</p>
+
+    <p>When the Kashasha school shut its doors, officials no doubt believed they were containing the problem. In a cruel irony, closing the school was what unleashed it.</p>
+
+    <p>The affected girls returned to their home villages and carried the pattern of symptoms with them. In April and May 1962, 217 people — mostly school-age children and young adults — experienced laughing attacks in the village of Nshamba, over the course of 34 days. Nshamba is about 55 miles west of Bukoba.</p>
+
+    <div class="img-side">
+      <div>
+        <p>In June, the epidemic reached Ramashenye Girls' Middle School, where 48 more students were affected. The Kanyangereka village saw cases as well. The outbreak spread through social networks rather than geographic proximity — affecting communities that were connected through family ties, school attendance, and shared cultural structures, not necessarily places that sat next to each other on a map.</p>
+        <p>The pattern was consistent: an outbreak would begin, run its course over several weeks, subside, and then flare up somewhere else with the same social conditions in place. By the time the phenomenon finally died out — roughly 18 months after it began — 14 schools had been closed and approximately 1,000 people had been affected.</p>
+      </div>
+      <div>
+        <img src="tanzania-map.png" alt="Map of Tanzania showing its location in East Africa" loading="lazy">
+        <p class="img-side__caption">Tanzania (then Tanganyika) — the outbreak spanned roughly 100 miles of the Lake Victoria western shore region.</p>
+      </div>
+    </div>
+
+    <!-- FACT BOX -->
+    <div class="fact-box">
+      <div class="fact-box__title">The Numbers</div>
+      <table>
+        <tr><td>Schools closed</td><td>14</td></tr>
+        <tr><td>People affected</td><td>~1,000</td></tr>
+        <tr><td>Duration</td><td>~18 months (1962–1964)</td></tr>
+        <tr><td>Geographic spread</td><td>~100 miles</td></tr>
+        <tr><td>Initial cases</td><td>3 girls → 95 of 159 (Kashasha)</td></tr>
+        <tr><td>Nshamba village</td><td>217 people over 34 days</td></tr>
+        <tr><td>Biological cause found</td><td>None</td></tr>
+      </table>
+    </div>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <!-- WHAT IT ACTUALLY LOOKED LIKE -->
+    <h2>What It Actually Looked Like</h2>
+
+    <p class="section-intro">The name is misleading — almost comically so, given what it described.</p>
+
+    <p>What the affected people experienced was not a carefree giggle or a joyful response to humor. It was a distressing, intrusive, and often scary set of symptoms that included:</p>
+
+    <ul class="symptom-list">
+      <li><strong>Uncontrollable laughter</strong> — involuntary, repetitive, and not tied to any emotional state of amusement</li>
+      <li><strong>Crying</strong> — episodes frequently blended between laughter and tears</li>
+      <li><strong>Restlessness and agitation</strong> — students reported feeling unable to sit still or calm themselves</li>
+      <li><strong>Pain</strong> — various physical pains were reported, though no clear source was identified</li>
+      <li><strong>Fainting and respiratory problems</strong> — some students experienced more severe symptoms</li>
+      <li><strong>Rashes and general malaise</strong> — physical symptoms without identifiable medical cause</li>
+      <li><strong>Severe anxiety and inability to concentrate</strong> — which made attending school impossible</li>
+    </ul>
+
+    <p>A crucial point, often lost in retelling: <strong>these people were not pretending, exaggerating, or pranking anyone.</strong> The symptoms were real, disruptive, and deeply distressing to the people experiencing them. The laughter functioned less like comedy and more like a malfunctioning reflex — a physical symptom of psychological distress that expressed itself in an unusual form.</p>
+
+    <p>Medical examinations were conducted. Doctors tested for infections, toxins, and neurological causes. Every test came back clean.</p>
+
+    <!-- SHORELINE IMAGE (BREAKOUT) -->
+    <div class="img-breakout" style="margin-top: 3.5rem; margin-bottom: 2rem;">
+      <img src="lake-victoria-shore.jpg" alt="Shoreline of Lake Victoria — the landscape surrounding Kashasha and Bukoba" loading="lazy">
+      <p class="img-breakout__caption">The Lake Victoria shoreline — the landscape that surrounded the villages where the outbreak took root.</p>
+    </div>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <!-- ROOT CAUSE -->
+    <h2>The Root Cause: Mass Psychogenic Illness</h2>
+
+    <p class="section-intro">Understanding the clinical label isn't the same as understanding <em>why</em>.</p>
+
+    <p>The medical term for what happened is <strong>Mass Psychogenic Illness (MPI)</strong> — sometimes called mass hysteria or conversion disorder. It describes a phenomenon where psychological distress expresses itself through physical symptoms that spread through a group via social contagion, with no underlying biological cause. MPI is well-documented and occurs across cultures and centuries.</p>
+
+    <p>But the critical questions remain: <strong>Why here? Why these people? Why laughter?</strong></p>
+
+    <p>The answer lies in the intersection of several powerful factors:</p>
+
+    <!-- SIDE-BY-SIDE WITH FISHING PHOTO -->
+    <div class="img-side img-side--reverse">
+      <div>
+        <img src="lake-victoria-fishing.jpg" alt="Fishing on Lake Victoria in Tanzania" loading="lazy">
+        <p class="img-side__caption">Life on Lake Victoria — the communities that would be reshaped by an invisible wave of distress.</p>
+      </div>
+      <div>
+        <p><strong>A Society in Upheaval.</strong> Tanganyika had just gained its independence in December 1961. The nation was literally being reborn — politically, socially, culturally — while the institutions that governed daily life (schools, churches, traditional authorities) were still operating under assumptions designed for a colonial order. For young people, especially girls caught between traditional conservatism at home and new aspirations at school, the dissonance must have been immense.</p>
+      </div>
+    </div>
+
+    <p><strong>A Pressure-Cooker Environment.</strong> Mission-run boarding schools in 1960s Tanzania were strict, hierarchical, and intensely disciplined. Students lived away from their families, subject to rigorous schedules and moral expectations. For adolescent girls — who are developmentally at peak susceptibility to social influence — this was a high-stress, low-autonomy environment.</p>
+
+    <p><strong>The Mechanics of MPI.</strong> Mass Psychogenic Illness almost always occurs in populations with limited power to address the sources of their distress in ordinary ways. It's a kind of psychological last resort — the body and mind finding a way to express what can't be expressed directly. Adolescents are particularly vulnerable because they lack fully developed coping mechanisms for stress and are highly attuned to social cues from peers.</p>
+
+    <blockquote class="pull-quote">
+      "MPI is a last resort for people of a low status. It's an easy way for them to express that something is wrong."
+      <footer style="font-size: 0.75rem; font-style: normal; margin-top: 8px; color: var(--gray);">— Christian Hempelmann, <em>Humor: International Journal of Humor Research</em> (2007)</footer>
+    </blockquote>
+
+    <p><strong>Sociologists Bartholomew and Wessely's Culture-Specific Hypothesis.</strong> Robert Bartholomew and Simon Wessely argued that the outbreak was a "conversion reaction" — a manifestation of the cultural dissonance between the strict traditional conservatism enforced at home and the new, liberating ideas encountered at school. They noted that MPI episodes in 1960s Africa were particularly prevalent in missionary schools, suggesting the collision of worldviews was the key trigger.</p>
+
+    <blockquote class="pull-quote">
+      "We must not, however, think for one moment that this is peculiar to Africans. There is much historical evidence to prove that emotional upheavals associated with hysteria occur whenever a people's cultural roots and beliefs become suddenly shattered."
+      <footer style="font-size: 0.75rem; font-style: normal; margin-top: 8px; color: var(--gray);">— Dr. Benjamin H. Kagwa, <em>East African Medical Journal</em> (1964)</footer>
+    </blockquote>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <!-- NOT JUST THE LAUGHTER -->
+    <h2>Not Just the Laughter</h2>
+
+    <p class="section-intro">Three outbreaks. One underlying story.</p>
+
+    <p>The Tanganyika outbreak was part of a cluster of three related mass behavioral epidemics across East Africa in the early 1960s:</p>
+
+    <div class="outbreaks">
+      <div class="outbreak-card">
+        <h4>Bukoba · Jan 1962</h4>
+        <p><strong>Laughter mania.</strong> Laughter, crying, restlessness, pain, fainting, respiratory problems, rashes, and anxiety — the outbreak that started it all.</p>
+      </div>
+      <div class="outbreak-card">
+        <h4>Kigezi, Uganda · Jul 1963</h4>
+        <p><strong>Running mania.</strong> Running, chest pain, agitation, talkativeness, violence, anorexia, exhaustion, and depression. Affected predominantly adolescent girls.</p>
+      </div>
+      <div class="outbreak-card">
+        <h4>Mbale, Uganda · Nov 1963</h4>
+        <p><strong>Running mania.</strong> The same symptom profile as Kigezi. Like the laughter epidemic, a dramatic expression of the same cultural dissonance.</p>
+      </div>
+    </div>
+
+    <p>All three occurred within a narrow geographic area and time window. All three affected predominantly adolescent girls. All three were attributed to the same underlying cause: the cultural dissonance of communities caught between traditional ways and modernizing influences.</p>
+
+    <p>The running manias were particularly dramatic — afflicted individuals ran for extended distances, experiencing acute physical exhaustion. Unlike the laughter epidemic, the running episodes were immediately visibly disruptive and drew swift intervention.</p>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <!-- HISTORICAL PARALLELS -->
+    <h2>Historical Parallels</h2>
+
+    <p class="section-intro">The Tanganyika Laughter Epidemic is part of a long lineage — one that stretches back centuries.</p>
+
+    <div class="parallels">
+      <div class="parallel-item">
+        <div class="parallel-name">The Dancing Plague of 1518 — Strasbourg</div>
+        <p>A woman began dancing in the street and couldn't stop. Within a month, roughly 400 people were dancing uncontrollably, some of them dancing themselves to death. Like Tanganyika, it was a stress-induced epidemic affecting a population under severe hardship — famine, disease, and extreme poverty.</p>
+      </div>
+      <div class="parallel-item">
+        <div class="parallel-name">The Dancing Mania of the Middle Ages</div>
+        <p>Periodic outbreaks of dancing and convulsive behavior across medieval Europe, particularly in Germany and France. Hundreds would dance for hours or days at a time, often in a state of apparent trance.</p>
+      </div>
+      <div class="parallel-item">
+        <div class="parallel-name">The Salem Witch Trials — 1692</div>
+        <p>Some historians have reinterpreted the bizarre physical symptoms experienced by the accusers (convulsions, contortions, screaming fits) as a form of MPI triggered by the extreme social tensions of Puritan Salem.</p>
+      </div>
+      <div class="parallel-item">
+        <div class="parallel-name">The Mad Gasser of Mattoon — 1944</div>
+        <p>A series of reports in Illinois of a mysterious gasser who allegedly sprayed toxic substances through bedroom windows at night, causing nausea, breathing difficulty, and paralysis. No gas was ever found. Investigators concluded it was a collective delusion.</p>
+      </div>
+      <div class="parallel-item">
+        <div class="parallel-name">The Montreal Joking Death (No Laughing Affair) — 1949</div>
+        <p>Two Canadian students died laughing at a movie, though medical investigation found no natural cause for death, and some researchers have linked the events to stress-induced physiological responses.</p>
+      </div>
+    </div>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <!-- THE MODERN LENS -->
+    <h2>What We Understand Now</h2>
+
+    <p class="section-intro">Since 1962, our understanding of MPI has advanced considerably.</p>
+
+    <ol class="mpi-list">
+      <li>
+        <strong>Closed-group environments</strong>
+        <span>Boarding schools, convents, workplaces, and factories are common sites because they create dense social networks with shared stressors.</span>
+      </li>
+      <li>
+        <strong>Powerlessness</strong>
+        <span>MPI disproportionately affects people who lack control over the conditions causing their distress. It's often described as "the last resort of the powerless."</span>
+      </li>
+      <li>
+        <strong>Social contagion via observation</strong>
+        <span>Seeing someone else experience symptoms primes observers to experience similar symptoms. Mirror neurons, empathy, and anxiety form a feedback loop.</span>
+      </li>
+      <li>
+        <strong>Cultural scripts</strong>
+        <span>The form MPI takes is shaped by cultural context and expectations. In medieval Europe under religious stress, it was dancing and convulsions. In 1960s Tanzania under cultural collision, it was laughter.</span>
+      </li>
+      <li>
+        <strong>The role of authority responses</strong>
+        <span>How institutions react to MPI can either amplify or contain it. Closing the Kashasha school and sending students home likely accelerated the outbreak rather than stopping it.</span>
+      </li>
+    </ol>
+
+    <!-- TIMELINE -->
+    <div class="timeline-wrap">
+      <div class="timeline-title">Outbreak Timeline</div>
+      <div class="timeline-track">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">December 1961</div>
+          <div class="timeline-desc">Tanganyika gains independence from British colonial rule.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot timeline-dot--accent"></div>
+          <div class="timeline-date">January 30, 1962</div>
+          <div class="timeline-desc">Outbreak begins at Kashasha Girls' Middle School with three girls.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan–Mar 1962</div>
+          <div class="timeline-desc">Spreads to 95 of 159 pupils. First phase lasts ~48 days.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot timeline-dot--accent"></div>
+          <div class="timeline-date">March 18, 1962</div>
+          <div class="timeline-desc">Kashasha school closes. Students sent home — carrying the laughter with them.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot timeline-dot--accent"></div>
+          <div class="timeline-date">Apr–May 1962</div>
+          <div class="timeline-desc">Nshamba village: 217 people affected over 34 days, ~55 miles west of Bukoba.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 21, 1962</div>
+          <div class="timeline-desc">Kashasha school reopens.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May–June 1962</div>
+          <div class="timeline-desc">Second phase at Kashasha affects 57 more pupils. Ramashenye Girls' Middle School sees 48 cases.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mid-1962–1963</div>
+          <div class="timeline-desc">Additional schools and Kanyangereka village affected. Outbreak ripples across the region.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot timeline-dot--accent"></div>
+          <div class="timeline-date">July 1963</div>
+          <div class="timeline-desc">Running mania breaks out in Kigezi, Uganda — the second in a cluster of three linked outbreaks.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot timeline-dot--accent"></div>
+          <div class="timeline-date">November 1963</div>
+          <div class="timeline-desc">Running mania breaks out in Mbale, Uganda — the third outbreak.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Early 1964</div>
+          <div class="timeline-desc">Phenomenon dies out — total duration ~18 months. 14 schools closed, ~1,000 people affected.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1964</div>
+          <div class="timeline-desc">Tanganyika unites with Zanzibar to form the United Republic of Tanzania.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT IT TEACHES US -->
+    <h2>What the Epidemic Teaches Us</h2>
+
+    <p class="section-intro">Not a curiosity. A lesson.</p>
+
+    <p>The Tanganyika Laughter Epidemic is not a curiosity. It's a lesson about the relationship between social environment and human physiology — how the body and mind respond when the social world shifts too fast for people to adapt.</p>
+
+    <p>Three girls started laughing. A thousand more followed. Fourteen schools closed. For 18 months, an entire region of East Africa dealt with something that no doctor could cure, no authority could command away, and no explanation could fully contain.</p>
+
+    <p>The epidemic ended because epidemics of this kind always end: the underlying social pressure shifted, the conditions that made the symptoms possible dissolved, and the people it affected gradually returned to their normal lives. But the underlying truth the epidemic exposed — that unaddressed stress and cultural dissonance can literally remake the body — remains as relevant today as it was in 1962.</p>
+
+    <!-- FINAL PULL QUOTE -->
+    <blockquote class="pull-quote pull-quote--final">
+      Laughter, it turned out, was the most honest thing those girls had.<br>It was just the wrong kind of laughter for anyone to recognize.
+    </blockquote>
+
+    <div class="divider">◆ ◆ ◆</div>
+
+    <!-- FURTHER READING -->
+    <h2>Further Reading</h2>
+
+    <ul class="further-reading">
+      <li><strong>Hempelmann, Christian F. (2007)</strong> — "The Epic Tanganyika Laughter Epidemic Revisited" — <em>Humor: International Journal of Humor Research</em>, 20(1), 49–71. The definitive academic analysis.</li>
+      <li><strong>Rankin, A.M. &amp; Philip, A.P.A. (1963)</strong> — "An epidemic of laughing in the Bukoba district of Tanganyika" — <em>Central African Journal of Medicine</em>, 69, 167–170. The original medical report.</li>
+      <li><strong>Bartholomew, Robert &amp; Evans, Hilary (2014)</strong> — <em>Outbreak! The Encyclopedia of Extraordinary Social Behavior</em> — McFarland. Comprehensive academic reference for MPI cases worldwide.</li>
+      <li><strong>Kagwa, Benjamin H. (1964)</strong> — "The Problem of Mass Hysteria in East Africa" — <em>East African Medical Journal</em>, 41, 560–565.</li>
+      <li><strong>Radiolab (2008)</strong> — "Laughter" — WNYC Studios podcast episode discussing the outbreak.</li>
+      <li><strong>Bartholomew, Robert E. (2001)</strong> — <em>Little Green Men, Meowing Nuns and Head-Hunting Panics</em> — McFarland.</li>
+    </ul>
+
+    <!-- IMAGE ATTRIBUTIONS -->
+    <div class="image-credits">
+      <strong style="display:block; margin-bottom:6px; color: var(--gray); font-family: 'Source Sans 3', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;">Image Credits</strong>
+      <ul style="list-style: none; padding: 0;">
+        <li>Lake Victoria from space — NASA, via <a href="https://commons.wikimedia.org/wiki/File:Lake_Victoria_from_space.jpg" target="_blank" rel="noopener" style="color: var(--gray);">Wikimedia Commons</a></li>
+        <li>Map of Tanzania — <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener" style="color: var(--gray);">Wikimedia Commons</a></li>
+        <li>Lake Victoria shoreline — <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener" style="color: var(--gray);">Wikimedia Commons</a></li>
+        <li>Fishing on Lake Victoria — <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener" style="color: var(--gray);">Wikimedia Commons</a></li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <p class="back-link">← <a href="../">Back to home</a></p>
+    <p style="color: var(--light-gray); font-size: 0.8rem;">The Tanganyika Laughter Epidemic · A historical longform by <a href="https://alanzoppa.github.io">alanzoppa.github.io</a></p>
+  </footer>
+
+</body>
+</html>
