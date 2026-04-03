@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The London Beer Flood</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍺</text></svg>">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --amber: #8B4513;
+      --amber-light: #D2691E;
+      --wheat: #F5DEB3;
+      --cream: #FAF3E0;
+      --dark: #2C1810;
+      --dark-mid: #3D2317;
+      --gold: #B8860B;
+      --gold-muted: rgba(184, 134, 11, 0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', 'Georgia', 'Times New Roman', serif;
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--dark);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 50% 120%, rgba(139,69,19,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 50%, rgba(184,134,11,0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-image {
+      width: 85%;
+      max-width: 900px;
+      aspect-ratio: 2 / 1;
+      object-fit: cover;
+      object-position: center 30%;
+      border-radius: 4px;
+      margin-bottom: 48px;
+      filter: contrast(1.05) brightness(0.92) sepia(0.15);
+      box-shadow: 0 12px 48px rgba(44,24,16,0.25), 0 2px 8px rgba(44,24,16,0.15);
+    }
+
+    .date-stamp {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--amber-light);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 1.1;
+      color: var(--dark);
+      max-width: 900px;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 24px;
+      font-size: 0.95em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .subtitle code {
+      background: rgba(139,69,19,0.08);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.95em;
+    }
+
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+      color: var(--amber);
+      max-width: 700px;
+      line-height: 1.55;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      border: none;
+      margin: 0 auto 24px;
+    }
+
+    .scroll-hint {
+      font-size: 0.8rem;
+      color: #999;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      position: relative;
+      animation: pulse-fade 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-fade {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* ─── ARTICLE BODY ─── */
+    .article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .article h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: var(--dark);
+      margin: 64px 0 20px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(139,69,19,0.15);
+      line-height: 1.25;
+    }
+
+    .article h2:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .section-number {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+
+    .article p {
+      margin-bottom: 1.2em;
+      text-rendering: optimizeLegibility;
+    }
+
+    .article > p:first-of-type::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4em;
+      font-weight: 900;
+      float: left;
+      line-height: 0.8;
+      margin-right: 8px;
+      margin-top: 6px;
+      color: var(--amber);
+    }
+
+    /* ─── PULL QUOTE ─── */
+    .pull-quote {
+      position: relative;
+      margin: 48px 0;
+      padding: 32px 40px;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-mid) 100%);
+      color: var(--wheat);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 16px;
+      font-style: normal;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      color: rgba(245,222,179,0.6);
+      text-transform: uppercase;
+    }
+
+    .pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: rgba(184,134,11,0.2);
+      line-height: 1;
+    }
+
+    /* ─── INLINE IMAGE ─── */
+    .image-block {
+      margin: 48px -40px;
+    }
+
+    .image-block img {
+      width: 100%;
+      display: block;
+      border-radius: 3px;
+      box-shadow: 0 4px 16px rgba(44,24,16,0.15);
+    }
+
+    .image-caption {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: #777;
+      font-style: italic;
+      line-height: 1.5;
+      text-align: center;
+      padding: 0 10px;
+    }
+
+    .image-side-by-side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 48px -40px;
+    }
+
+    .image-side-by-side .image-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .image-side-by-side img {
+      width: 100%;
+      border-radius: 3px;
+      box-shadow: 0 4px 16px rgba(44,24,16,0.15);
+    }
+
+    /* ─── VICTIMS MEMORIAL ─── */
+    .memorial {
+      margin: 56px 0;
+      padding: 40px 40px 32px;
+      background: linear-gradient(180deg, rgba(44,24,16,0.03) 0%, rgba(44,24,16,0.06) 100%);
+      border: 1px solid rgba(139,69,19,0.12);
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .memorial::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 0 0 2px 2px;
+    }
+
+    .memorial-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .memorial-subtitle {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+
+    .memorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+
+    .victim-card {
+      padding: 16px 20px;
+      background: rgba(250,243,224,0.8);
+      border-radius: 3px;
+      border: 1px solid rgba(139,69,19,0.08);
+    }
+
+    .victim-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--dark);
+    }
+
+    .victim-age {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--amber-light);
+      letter-spacing: 0.05em;
+      margin-left: 6px;
+    }
+
+    .victim-detail {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .memorial-note {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(139,69,19,0.1);
+      text-align: center;
+      font-style: italic;
+      font-size: 0.92rem;
+      color: #777;
+    }
+
+    /* ─── SEQUENCE TIMELINE ─── */
+    .sequence-block {
+      margin: 40px 0;
+    }
+
+    .sequence-item {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .sequence-time {
+      flex: 0 0 180px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--amber-light);
+      letter-spacing: 0.05em;
+      padding-top: 2px;
+    }
+
+    .sequence-content {
+      flex: 1;
+    }
+
+    .sequence-content p {
+      margin-bottom: 0.6em;
+    }
+
+    /* ─── VISUAL BREAK ─── */
+    .section-break {
+      text-align: center;
+      margin: 56px 0 48px;
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 12px;
+    }
+
+    /* ─── TIMELINE TABLE ─── */
+    .timeline-section {
+      margin: 64px 0 0;
+      padding: 48px 0 24px;
+      border-top: 2px solid rgba(139,69,19,0.15);
+    }
+
+    .timeline-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .timeline-table tr {
+      border-bottom: 1px solid rgba(139,69,19,0.08);
+    }
+
+    .timeline-table tr:last-child {
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .timeline-table td {
+      padding: 14px 12px;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+
+    .timeline-table td:first-child {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--amber-light);
+      white-space: nowrap;
+      width: 220px;
+      letter-spacing: 0.02em;
+    }
+
+    .timeline-table tr:hover {
+      background: rgba(139,69,19,0.03);
+    }
+
+    /* ─── HISTORICAL IMAGES NOTE ─── */
+    .historical-note {
+      margin-top: 56px;
+      padding: 24px 32px;
+      background: rgba(184,134,11,0.06);
+      border-radius: 4px;
+      border: 1px solid rgba(184,134,11,0.12);
+    }
+
+    .historical-note h2 {
+      margin-top: 0 !important;
+      font-size: 1.2rem !important;
+      border-top: none !important;
+      padding-top: 0 !important;
+    }
+
+    .historical-note p {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 0 !important;
+    }
+
+    .model-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: var(--gold-muted);
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      text-align: center;
+      padding: 40px 24px 60px;
+      border-top: 1px solid rgba(139,69,19,0.12);
+    }
+
+    .footer a {
+      color: var(--amber);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+      color: var(--amber-light);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      .article { padding: 40px 20px 60px; }
+      .image-block, .image-side-by-side { margin: 32px -20px; }
+      .image-side-by-side { grid-template-columns: 1fr; }
+      .pull-quote { padding: 24px 24px; margin: 36px -10px; }
+      .pull-quote p { font-size: 1.15rem; }
+      .memorial-grid { grid-template-columns: 1fr; }
+      .sequence-item { flex-direction: column; gap: 4px; }
+      .sequence-time { font-size: 0.75rem; }
+      .timeline-table td:first-child { width: auto; white-space: normal; }
+      .hero { min-height: 80vh; padding: 40px 16px; }
+      .hero-image { width: 95%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════ HERO ════════════ -->
+  <header class="hero">
+    <img class="hero-image" src="horseshoe-brewery-c1800.jpg" alt="The Horse Shoe Brewery, London, c. 1800">
+    <div class="date-stamp">October 17, 1814 · London, England</div>
+    <h1>The London Beer Flood</h1>
+    <p class="subtitle">Generated by <code>openrouter/qwen/qwen3.6-plus:free</code> · April 3, 2026</p>
+    <p class="hero-sub">When a single slipped iron hoop unleashed 1.47 million liters of fermenting porter into one of London's poorest neighborhoods — and eight people never made it home.</p>
+    <hr class="hero-divider">
+    <div class="scroll-hint">&#8595; Read the story</div>
+  </header>
+
+  <!-- ════════════ ARTICLE ════════════ -->
+  <main class="article">
+
+    <!-- &#9472;&#9472; Part I: The Brewery &#9472;&#9472; -->
+    <h2>
+      <span class="section-number">Part I</span>
+      The Brewery
+    </h2>
+
+    <p>The Horseshoe Brewery on Tottenham Court Road was one of the two largest breweries in early 19th-century London, alongside Whitbread's operation. Founded in 1764, it became famous for its porter — a dark, malty beer that was the most popular alcoholic drink in the capital. By 1812, it was brewing over 102,000 imperial barrels annually.</p>
+
+    <p>In 1809, Sir Henry Meux — son of a brewer who had built the largest vat in London years earlier — emulated his father's ambition. He commissioned a wooden fermentation vessel of staggering proportions: 22 feet tall, capable of holding 18,000 imperial barrels, roughly 650,000 gallons, or nearly 1 million pints. The entire structure was held together by eighty long tons of iron hoops, each weighing 700 pounds.</p>
+
+    <p>Porter was left to mature in these immense vats for several months — sometimes up to a year for the finest batches. On the day everything went wrong, one such vat held 3,555 imperial barrels of 10-month-old porter, filled to within four inches of the top.</p>
+
+    <!-- &#9472;&#9472; Part II: St. Giles &#9472;&#9472; -->
+    <hr class="section-break">
+
+    <h2>
+      <span class="section-number">Part II</span>
+      St. Giles &#8212; The Rookery
+    </h2>
+
+    <p>Behind the brewery lay New Street, a small cul-de-sac within the St. Giles rookery — one of London's most desperate slums. Covering just eight acres, it was a "perpetually decaying slum seemingly always on the verge of social and economic collapse," as scholar Richard Kirkland described it. The preacher Thomas Beames called it "a rendezvous of the scum of society."</p>
+
+    <p>This squalid neighborhood had famously inspired William Hogarth's 1751 print <em>Gin Lane</em>, one of the most powerful social commentaries in British art. By 1814, conditions had scarcely improved. The homes flanking the brewery were decrepit tenements, their cellars inhabited by families so poor they had nowhere else to go.</p>
+
+    <div class="image-side-by-side">
+      <div class="image-item">
+        <img src="st-giles-rookery.jpg" alt="A Scene in St Giles's rookery, c. 1850">
+        <p class="image-caption">A Scene in St. Giles's &#8212; the rookery, c. 1850. The neighborhood behind the brewery was among the poorest in London. Source: The British Library / Wikimedia Commons</p>
+      </div>
+      <div class="image-item">
+        <img src="gin-lane-hogarth.jpg" alt="William Hogarth's Gin Lane (1751)">
+        <p class="image-caption">William Hogarth's <em>Gin Lane</em> (1751), inspired by the St. Giles rookery. The brewery's rear wall loomed over the very streets Hogarth had immortalized decades earlier. Source: Wikimedia Commons</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>The scene showed a desolation that presented a most awful and terrific appearance, equal to that which fire or earthquake may be supposed to occasion.</p>
+      <cite>&#8212; The Morning Post, October 1814</cite>
+    </div>
+
+    <!-- &#9472;&#9472; Part III: The Sequence &#9472;&#9472; -->
+    <h2>
+      <span class="section-number">Part III</span>
+      The Sequence
+    </h2>
+
+    <div class="sequence-block">
+      <div class="sequence-item">
+        <div class="sequence-time">~4:30 PM<br>October 17, 1814</div>
+        <div class="sequence-content">
+          <p>George Crick, the brewery's storehouse clerk, climbed up to inspect the massive fermentation vat and noticed that one of the 700-pound iron hoops had slipped off. This happened two or three times a year — routine, unremarkable. He told his supervisor, who replied <strong>"that no harm whatever would ensue."</strong> Crick was told to write a note to Mr. Young, a brewery partner, to have it fixed later.</p>
+        </div>
+      </div>
+      <div class="sequence-item">
+        <div class="sequence-time">~5:30 PM</div>
+        <div class="sequence-content">
+          <p>An hour later, Crick was standing on a platform 30 feet from the vat, note in hand, when the vessel burst with no warning.</p>
+          <p>The force was apocalyptic. The escaping porter knocked the stopcock off a neighboring vat, which began pouring its contents into the chaos. Several hogsheads of porter were smashed. By the time it was over, between 128,000 and 323,000 imperial gallons of beer — 580,000 to 1.47 million liters — had been unleashed in one continuous wave.</p>
+          <p>The pressure destroyed the brewery's rear wall: 25 feet high, two and a half bricks thick. Bricks were knocked upward and rained down on the roofs of Great Russell Street houses. On the brewery side, three workmen had to be pulled from the rubble, all surviving. Outside&#8230;</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>
+      <span class="section-number">The Flood</span>
+    </h2>
+
+    <p>A wave of porter approximately 15 feet high swept through New Street like a tsunami of black malt. Houses crumbled. Beer poured into cellars with no drainage, rising fast enough that people had to climb onto tables and furniture to avoid drowning.</p>
+
+    <hr class="section-break">
+
+    <!-- &#9472;&#9472; Part IV: The Dead &#9472;&#9472; -->
+    <h2>
+      <span class="section-number">Part IV</span>
+      The Dead
+    </h2>
+
+    <p>Eight people lost their lives. All were women and children. None of them had anything to do with the brewery.</p>
+
+    <div class="memorial">
+      <div class="memorial-title">In Memoriam</div>
+      <div class="memorial-subtitle">Eight lives lost on October 17, 1814</div>
+      <div class="memorial-grid">
+        <div class="victim-card">
+          <div class="victim-name">Eleanor Cooper<span class="victim-age">14</span></div>
+          <div class="victim-detail">A servant at the Tavistock Arms pub, washing pots in the yard behind the building. The collapsing brick wall crushed her instantly.</div>
+        </div>
+        <div class="victim-card">
+          <div class="victim-name">Hannah Bamfield<span class="victim-age">4</span></div>
+          <div class="victim-detail">Having tea with her mother and another child when the wave struck. The flood swept her mother and the other child into the street. Hannah did not survive.</div>
+        </div>
+        <div class="victim-card">
+          <div class="victim-name">Anne Saville<span class="victim-age">60</span></div>
+          <div class="victim-detail">The grieving mother at the center of it all. She was holding a wake for her 2-year-old son John, who had died the day before. Buried by the flood alongside four other mourners.</div>
+        </div>
+        <div class="victim-card">
+          <div class="victim-name">Mary Mulvey<span class="victim-age">30</span></div>
+          <div class="victim-detail">An Irish immigrant, attending the wake with her 3-year-old son.</div>
+        </div>
+        <div class="victim-card">
+          <div class="victim-name">Thomas Murry<span class="victim-age">3</span></div>
+          <div class="victim-detail">Mary Mulvey's son.</div>
+        </div>
+        <div class="victim-card">
+          <div class="victim-name">Elizabeth Smith<span class="victim-age">27</span></div>
+          <div class="victim-detail">Another mourner at the Saville wake.</div>
+        </div>
+        <div class="victim-card">
+          <div class="victim-name">Catherine Butler<span class="victim-age">65</span></div>
+          <div class="victim-detail">The oldest victim, also at the wake.</div>
+        </div>
+        <div class="victim-card">
+          <div class="victim-name">Sarah Bates<span class="victim-age">3 &amp; 5 months</span></div>
+          <div class="victim-detail">Found dead in another house on New Street.</div>
+        </div>
+      </div>
+      <div class="memorial-note">
+        The five mourners — Saville, Mulvey, Murry, Smith, and Butler — had been gathered in a cellar apartment on New Street to grieve the death of a two-year-old boy. The force of the beer flood collapsed their house on top of them. They were given their own wake afterward at The Ship public house on Bainbridge Street.
+      </div>
+    </div>
+
+    <!-- &#9472;&#9472; Part V: The Aftermath &#9472;&#9472; -->
+    <h2>
+      <span class="section-number">Part V</span>
+      The Aftermath
+    </h2>
+
+    <p>The scene was apocalyptic. The <em>Morning Post</em> reported that it showed "a scene of desolation that presents a most awful and terrific appearance, equal to that which fire or earthquake may be supposed to occasion." Rescuers — their clothes drenched in hot malt liquor — waded through waist-high beer, digging through rubble with their bare hands, trying to silence the gawkers so they could hear cries for help.</p>
+
+    <p>Watchmen at the brewery charged spectators to view the wreckage, and hundreds came. It was dark tourism, nearly two centuries before the term existed.</p>
+
+    <p>A coroner's inquest was held two days later, on October 19. The jury returned a verdict that the victims had died <strong>"casually, accidentally and by misfortune"</strong> — essentially an Act of God. Meux &amp; Co were absolved of liability and owed no compensation to the destitute families of the dead.</p>
+
+    <p>The disaster cost the company &#163;23,000 — the lost beer, damaged buildings, and rebuilding the vat. They came within a hair's breadth of bankruptcy. Only after a private petition to Parliament did they recover approximately &#163;7,250 from HM Excise as a rebate on the destroyed beer's taxes.</p>
+
+    <!-- &#9472;&#9472; Part VI: Why You've Never Heard of It &#9472;&#9472; -->
+    <h2>
+      <span class="section-number">Part VI</span>
+      Why You've Never Heard of It
+    </h2>
+
+    <p>Stories later arose of crowds collecting the spilled beer, mass drunkenness, even a death from alcohol poisoning. There is no evidence of any of this in newspapers of the time. The crowds were described as orderly and well-behaved. The myth of beer-swigging Londoners appears to be a Victorian urban legend — perhaps born of the press's hostility toward the Irish immigrant population of St. Giles. If there had been misbehavior, the papers of 1814 would not have hesitated to report it.</p>
+
+    <p>The disaster faded from popular memory because it sat at an uncomfortable intersection: it was too silly to be taken seriously as history, too tragic to be treated as comedy.</p>
+
+    <!-- &#9472;&#9472; Part VII: Legacy &#9472;&#9472; -->
+    <h2>
+      <span class="section-number">Part VII</span>
+      Legacy
+    </h2>
+
+    <p>The brewery itself — the Horseshoe Brewery — resumed operations soon after the flood, but not for long in the grand scheme. It closed in 1921 and was demolished the following year. The Dominion Theatre now stands on the site where 323,000 gallons of beer once poured through London's poorest streets.</p>
+
+    <p>Meux &amp; Co survived, brewed through the Victorian era, but eventually went into liquidation in 1961.</p>
+
+    <p>The most lasting impact was on the brewing industry itself: the London Beer Flood accelerated the industry-wide shift away from massive wooden fermentation vats. Within decades, breweries replaced them with lined concrete vessels — a change that eliminated the risk of catastrophic failure at the scale seen in 1814.</p>
+
+    <p>It's a small footnote in the history of industrial safety, one that cost eight lives to write.</p>
+
+    <!-- &#9472;&#9472; Timeline &#9472;&#9472; -->
+    <section class="timeline-section">
+      <div class="timeline-title">Timeline</div>
+      <div class="memorial-subtitle">Key dates in the story of the London Beer Flood</div>
+      <table class="timeline-table">
+        <tr><td>1764</td><td>Horse Shoe Brewery founded</td></tr>
+        <tr><td>1809</td><td>Sir Henry Meux purchases the brewery</td></tr>
+        <tr><td>1810</td><td>Giant 22-foot wooden vat constructed</td></tr>
+        <tr><td>Oct 17, 1814, ~4:30 PM</td><td>George Crick spots a slipped iron hoop on the fermentation vat</td></tr>
+        <tr><td>Oct 17, 1814, ~5:30 PM</td><td>The vat bursts, unleashing up to 323,000 imperial gallons of porter</td></tr>
+        <tr><td>Oct 19, 1814</td><td>Coroner's inquest: verdict of "casually, accidentally and by misfortune"</td></tr>
+        <tr><td>1921</td><td>Horseshoe Brewery closes</td></tr>
+        <tr><td>1922</td><td>Brewery demolished; Dominion Theatre later built on the site</td></tr>
+        <tr><td>1961</td><td>Meux &amp; Co enters liquidation</td></tr>
+      </table>
+    </section>
+
+    <!-- &#9472;&#9472; Historical Images &#9472;&#9472; -->
+    <hr>
+    <div class="historical-note">
+      <h2>Historical Images</h2>
+      <p>All images sourced from Wikimedia Commons (public domain). No AI-generated images used on this page. <span class="model-badge">ALL HISTORICAL IMAGES</span></p>
+    </div>
+
+  </main>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <div class="footer">
+    <p><a href="../">&#8592; Back to home</a></p>
+  </div>
+
+</body>
+</html>
